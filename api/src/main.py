@@ -1,5 +1,12 @@
-import random
+from fastapi import FastAPI
+
+app = FastAPI(
+    title="Sumarizer API",
+    version="0.0.1",
+    description="Third brain for your notes",
+)
 
 
-def add(a: int, b: int) -> int:
-    return a + b + random.randint(a, b)
+@app.get("/health")
+async def health_check() -> dict:
+    return {"status": "ok"}
